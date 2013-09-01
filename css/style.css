@@ -1,0 +1,19 @@
+.bold { 
+	font-weight: bold;
+}
+
+.ui-collapsible-content {
+	padding: 15px 0 15px 8px;
+}
+
+.ui-collapsible-content .ui-listview {
+	margin: -15px 0px -15px -8px;
+}
+
+.ui-listview .ui-li-icon {
+	top: 0.7em;
+}
+
+div#info .ui-content {
+	text-align: center;
+}
