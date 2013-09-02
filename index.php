@@ -1,3 +1,6 @@
+<?php
+    require_once('php/utils.php');
+?>
 <!DOCTYPE html>
 <html> 
  
@@ -23,6 +26,8 @@
     </div>
  
     <div data-role="content">
+
+        <h2>National Leagues (<?php echo getSeason(); ?>)</h2>
     
     	<div data-role="collapsible" data-theme="a" data-content-theme="c" data-url="eng1">
     		<h3>Barclays Premier League</h3>
@@ -60,7 +65,8 @@
     	</div>
     	
     	<br />
-    	
+    	<h2>International Competitions (<?php echo getSeason(); ?>)</h2>
+
     	 <div data-role="collapsible" data-theme="a" data-content-theme="c" data-url="cl">
     		<h3>UEFA Champions League</h3>
     		<div class="teams"></div>

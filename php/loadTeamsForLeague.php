@@ -1,16 +1,18 @@
 <?php
 
+	require_once('utils.php');
 	require_once('QueryPath/QueryPath.php');
-	
-	$leagueUrls = array('eng1' => 'http://www.kicker.de/news/fussball/intligen/england/barclays-premier-league/2011-12/vereine-liste.html',
-						'ger1' => 'http://www.kicker.de/news/fussball/bundesliga/spieltag/1-bundesliga/2011-12/vereine-liste.html',
-						'ger2' => 'http://www.kicker.de/news/fussball/2bundesliga/vereine/2-bundesliga/2011-12/vereine-liste.html',
-						'ger3' => 'http://www.kicker.de/news/fussball/3liga/vereine/3-liga/2011-12/vereine-liste.html',
-						'esp1' => 'http://www.kicker.de/news/fussball/intligen/spanien/liga-bbva/2011-12/vereine-liste.html',
-						'ita1' => 'http://www.kicker.de/news/fussball/intligen/italien/serie-a-tim/2011-12/vereine-liste.html',
-						'fra1' => 'http://www.kicker.de/news/fussball/intligen/frankreich/ligue-1-orange/2011-12/vereine-liste.html',
-						'cl' => 'http://www.kicker.de/news/fussball/chleague/vereine/champions-league/2011-12/vereine-liste.html',
-						'eu' => 'http://www.kicker.de/news/fussball/uefa/vereine/europa-league/2011-12/vereine-liste.html');
+
+	$season = getSeason();
+	$leagueUrls = array('eng1' => 'http://www.kicker.de/news/fussball/intligen/england/barclays-premier-league/' . $season . '/vereine-liste.html',
+						'ger1' => 'http://www.kicker.de/news/fussball/bundesliga/spieltag/1-bundesliga/' . $season . '/vereine-liste.html',
+						'ger2' => 'http://www.kicker.de/news/fussball/2bundesliga/vereine/2-bundesliga/' . $season . '/vereine-liste.html',
+						'ger3' => 'http://www.kicker.de/news/fussball/3liga/vereine/3-liga/' . $season . '/vereine-liste.html',
+						'esp1' => 'http://www.kicker.de/news/fussball/intligen/spanien/liga-bbva/' . $season . '/vereine-liste.html',
+						'ita1' => 'http://www.kicker.de/news/fussball/intligen/italien/serie-a-tim/' . $season . '/vereine-liste.html',
+						'fra1' => 'http://www.kicker.de/news/fussball/intligen/frankreich/ligue-1-orange/' . $season . '/vereine-liste.html',
+						'cl' => 'http://www.kicker.de/news/fussball/chleague/vereine/champions-league/' . $season . '/vereine-liste.html',
+						'eu' => 'http://www.kicker.de/news/fussball/uefa/vereine/europa-league/' . $season . '/vereine-liste.html');
 	$qp = htmlqp($leagueUrls[$_POST["league"]]);
 	
 	echo '<ul data-role="listview" class="ui-listview">';
