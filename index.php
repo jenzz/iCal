@@ -27,7 +27,7 @@
  
     <div data-role="content">
 
-        <h2>National Leagues (<?php echo getSeason(); ?>)</h2>
+        <h2>National Leagues (<?php echo season(); ?>)</h2>
     
     	<div data-role="collapsible" data-theme="a" data-content-theme="c" data-url="eng1">
     		<h3>Barclays Premier League</h3>
@@ -65,7 +65,7 @@
     	</div>
     	
     	<br />
-    	<h2>International Competitions (<?php echo getSeason(); ?>)</h2>
+    	<h2>International Competitions (<?php echo season(); ?>)</h2>
 
     	 <div data-role="collapsible" data-theme="a" data-content-theme="c" data-url="cl">
     		<h3>UEFA Champions League</h3>
@@ -77,6 +77,33 @@
     		<div class="teams"></div>
     	</div>
     	
+    </div>
+
+</div>
+
+<div data-role="page" id="detail">
+
+    <div data-role="header" data-position="inline">
+        <a href="#home" class="ui-btn-left" data-icon="home">Home</a>
+        <h1>Football Fixtures to iCal</h1>
+        <a href="#info" class="ui-btn-right" data-icon="info">Info</a>
+    </div>
+
+    <div data-role="content">
+        <h2><span id="team"></span> (<?php echo season(); ?>)</h2>
+
+        <div>
+            Kick-off times for time zone: <span class="bold"><?php timezone(); ?></span>
+            <br /><br />
+            <span class="bold">Current time:</span> <?php now(); ?>
+        </div>
+
+        <br />
+
+        <div data-role="collapsible" data-theme="a" data-content-theme="c" data-collapsed="false">
+            <h3>Fixtures</h3>
+            <div class="fixtures"></div>
+        </div>
     </div>
 
 </div>

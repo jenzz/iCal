@@ -3,7 +3,7 @@
 	require_once('utils.php');
 	require_once('QueryPath/QueryPath.php');
 
-	$season = getSeason();
+	$season = season();
 	$leagueUrls = array('eng1' => 'http://www.kicker.de/news/fussball/intligen/england/barclays-premier-league/' . $season . '/vereine-liste.html',
 						'ger1' => 'http://www.kicker.de/news/fussball/bundesliga/spieltag/1-bundesliga/' . $season . '/vereine-liste.html',
 						'ger2' => 'http://www.kicker.de/news/fussball/2bundesliga/vereine/2-bundesliga/' . $season . '/vereine-liste.html',
@@ -19,19 +19,20 @@
 	foreach($qp->find('table.tStat tr.fest') as $row) :
 	
 		$team = $row->branch()->find('a.verinsLinkBild')->text();
-		$imgUrl = $row->branch()->find('img.verinsLinkBild')->attr('src');
+		$img = $row->branch()->find('img.verinsLinkBild')->attr('src');
 		$fixturesUrl = $row->find('a.link:contains(Termine)')->attr('href');
-		
+		$fixturesUrlEncoded = urlencode('http://www.kicker.de' . $fixturesUrl);
+
 		echo '<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-icon ui-btn-up-c">
 					<div class="ui-btn-inner ui-li">
 						<div class="ui-btn-text">
-								<a href="http://www.kicker.de'.$fixturesUrl.'" class="ui-link-inherit">
-											<img src="'.$imgUrl.'" alt="'.$team.'" class="ui-li-icon ui-li-thumb">'.$team.'
-										</a>
-									</div>
-									<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
-								</div>
-							</li>';
+							<a href="#detail" class="ui-link-inherit" data-fixtures-url="' . $fixturesUrlEncoded . '">
+								<img src="' . $img . '" alt="' . $team . '" class="ui-li-icon ui-li-thumb">' . $team . '
+							</a>
+						</div>
+						<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>
+					</div>
+				</li>';
 	endforeach;	
 	echo '</ul>';
 
