@@ -25,14 +25,17 @@
 	// Parses the custom date format from kicker.de and returns a DateTime object
 	function parseDate($date) {
 		$date = substr($date, 4); // remove weekday prefix
-		$timezone = 'Europe/Berlin'; // dates are in german time zone
-		return DateTime::createFromFormat('d.m.y H:i', $date, new DateTimeZone($timezone));
+		$timezone = new DateTimeZone('Europe/Berlin'); // dates are in german time zone
+		$format = strlen($date) > 8 ? 'd.m.y H:i' : 'd.m.y'; // some fixtures are lacking kick-off times
+		$result = DateTime::createFromFormat($format, $date, $timezone);
+		return $result;
 	}
 
 	// Converts the given DateTime object into a human readable format
 	// e.g. Sunday 01st September 2013 @ 14:30
 	function formatDate($date) {
-		$date->setTimeZone(new DateTimeZone('Europe/London')); // convert into BST
+		$timezone = new DateTimeZone('Europe/London');
+		$date->setTimeZone($timezone); // convert into BST
 		return $date->format('l dS F Y @ H:i');
 	}
 
